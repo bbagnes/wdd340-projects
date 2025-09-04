@@ -14,3 +14,7 @@ node_modules
 
 # .DS_Store is only for Mac users
 **/.DS_Store
+
+# For reference only. Created as part of repo template build.
+README.md
+
