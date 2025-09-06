@@ -53,26 +53,30 @@ header span.siteName a {
 }
 
 header div a {
-  text-decoration: none;
+  text-decoration: none;  
   color: var(--accent1-color);
   text-align: right;
 }
 
-Nav {
-  
+Nav {  
   background-color: var(--secondary-color);
   Padding: 2px;
 }
 
 Nav ul {
+  display: flex;
+  padding: 2px 0;
+  margin: 0;
   justify-items: space-evenly;
 }
 
 nav li{
   display: inline;
   text-align: center;
+  font-weight: 600;
   list-style: none;
-  padding: 12px 2px;  
+  padding: 12px 2px;
+  margin: auto;  
 }
 
 nav li:hover {
