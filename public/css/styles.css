@@ -106,6 +106,21 @@ nav li:hover {
   background-color: var(--nav-hover-background-color);
 }
 
+#inv-display {
+  list-style: none;
+}
+
+#inv-item {
+  padding: 2px;
+  background-color: var(--secondary-color);
+  border: 1px solid #3066be;
+}
+
+div.namePrice {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
