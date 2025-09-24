@@ -7,7 +7,7 @@ const accountModel = require("../models/account-model")
 async function buildLogin(req, res, next) {
   let nav = await utilities.getNav()
   res.render("account/login", {
-    title: "Login", nav})
+    title: "Login", nav, errors: null})
 }
 
 /* ****************************************

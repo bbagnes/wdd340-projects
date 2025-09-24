@@ -155,7 +155,7 @@ div #loginForm, div #registerForm {
   padding: 15px;
   min-width: 280px;
   width: 80%;
-  max-width: 480px;
+  max-width: 520px;
   min-height: 320px;
   height: auto;
   border: 3px solid var(--secondary-color);
@@ -169,15 +169,19 @@ div #loginForm label, div #loginForm input {
   margin: 10px;
 }
 
-div #registerForm input:invalid {
+input:required:invalid, input:focus:invalid {
   border: 3px solid red;
 }
 
-div #registerForm input:valid {
+input:required:valid {
   border: 3px solid green;
 }
 
-div #loginButton, div #regButton {
+div #loginForm p, div #registerForm p {
+  margin: 0 10px;
+}
+
+div #accountButton {
   justify-self:center;
   text-align: center;
   max-width: 100px;

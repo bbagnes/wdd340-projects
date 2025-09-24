@@ -13,10 +13,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
   let nav = await utilities.getNav()
   const className = data[0].classification_name
   res.render("./inventory/classification", {
-    title: className + " vehicles",
-    nav,
-    grid,
-  })
+    title: className + " vehicles", nav, grid, errors: null})
 }
 
 module.exports = invCont

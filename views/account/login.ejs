@@ -8,10 +8,11 @@
 <div id="loginForm">
     <form >
     <label for="account_email" aria-label="Account Email">Email:</label><br>
-    <input type="text" id="account_email" name="account_email"><br>
+    <input type="email" name="account_email" required><br>
     <label for="account_password" aria-label="Account Password">Password:</label><br>
-    <input type="password" id="account_password" name="account_password"><br><br>
-    <input id="loginButton" type="submit" value="Login">    
+    <input type="password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" placeholder="*" required><br>
+    <p>*Password must be a minimun of 12 characters and include 1 capitol letter, 1 number and 1 special character.</p><br>
+    <input id="accountButton" type="submit" value="Login">    
     </form>
-    <p >No account? <a id="signup" href="/account/register">Sign-up here</a></p>
+    <p >No account? <a id="signup" href="/account/register">Sign-up</a></p>
 </div>

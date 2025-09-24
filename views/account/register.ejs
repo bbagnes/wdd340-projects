@@ -5,16 +5,24 @@
   res.redirect('/')
 } %>
 <%- messages() %>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
 <div id="registerForm">
     <form action="/account/register" method="post">
     <label for="account_firstname" aria-label="Enter your First Name" >First Name:</label><br>
-    <input type="text" id="account_firstname" name="account_firstname" required><br>
+    <input type="text" name="account_firstname" required><br>
     <label for="account_lastname" aria-label="Enter your Last Name">Last Name:</label><br>
-    <input type="text" id="account_lastname" name="account_lastname" required><br>
+    <input type="text" name="account_lastname" required><br>
     <label for="account_email" aria-label="Enter your Email">Email Address:</label><br>
-    <input type="text" id="account_email" name="account_email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required><br>
+    <input type="email" name="account_email" required placeholder="Enter a valid email address"><br>
     <label for="account_password" aria-label="Select an account Password">Password:</label><br>
-    <input type="password" id="account_password" name="account_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" required><br><br>
-    <input id="regButton" type="submit" value="Register">    
+    <input type="password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" placeholder="*" required><br>
+    <p>*Password must be a minimun of 12 characters and include 1 capitol letter, 1 number and 1 special character.</p><br>
+    <input id="accountButton" type="submit" value="Register">    
     </form>
 </div>
