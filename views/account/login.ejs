@@ -1,0 +1,17 @@
+<!-- Generate a title with values created in the controller, or return the home view. -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+<%- messages() %>
+<div id="loginForm">
+    <form >
+    <label for="account_email" aria-label="Account Email">Email:</label><br>
+    <input type="text" id="account_email" name="account_email"><br>
+    <label for="account_password" aria-label="Account Password">Password:</label><br>
+    <input type="password" id="account_password" name="account_password"><br><br>
+    <input id="loginButton" type="submit" value="Login">    
+    </form>
+    <p >No account? <a id="signup" href="/account/register">Sign-up here</a></p>
+</div>
