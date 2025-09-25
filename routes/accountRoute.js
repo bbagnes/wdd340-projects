@@ -3,8 +3,7 @@ const express = require("express")
 const router = new express.Router()
 const utilities = require("../utilities/")
 const accountController = require("../controllers/accountController")
-const regValidate = require("../utilities/account-validation")
-const loginValidate= require("../utilities/account-validation")
+const accountValidate = require("../utilities/account-validation")
 
 // Route to build Login form by Login view
 router.get("/login", utilities.handleErrors(accountController.buildLogin))
@@ -15,16 +14,16 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 //Route to validate and store registration form information into the account table in the database
 router.post(
     "/register",
-    regValidate.registationRules(),
-    regValidate.checkRegData,
+    accountValidate.registationRules(),
+    accountValidate.checkRegData,
     utilities.handleErrors(accountController.registerAccount)
 )
 
 // Process the login attempt
 router.post(
   "/login",
-  loginValidate.loginRules(),
-  loginValidate.checkloginData,
+  accountValidate.loginRules(),
+  accountValidate.checkloginData,
   (req, res) => {
     res.status(200).send('login process')
   }
