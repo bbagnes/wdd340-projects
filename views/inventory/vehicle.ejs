@@ -1,0 +1,13 @@
+<!-- Generate a title with values created in the controller, or return the home view. -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- Create an element to display a message, if needed. (currently commented '#' out).
+Replacing the '#' with a '-' will allow the display of a message, if there is one to display. -->
+<%# messages() %>
+
+<!-- Insert the previously defined variable grid from utilities/index.js to view using EJS format. -->
+<%- grid %>

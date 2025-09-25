@@ -5,13 +5,20 @@
   res.redirect('/')
 } %>
 <%- messages() %>
-<div id="loginForm">
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+<div id="loginForm" action="/account/login" method="post">
     <form >
     <label for="account_email" aria-label="Account Email">Email:</label><br>
-    <input type="email" name="account_email" required><br>
+    <input type="email" name="account_email" id="account_email" required value="<%= locals.account_email %>"><br>
     <label for="account_password" aria-label="Account Password">Password:</label><br>
-    <input type="password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" placeholder="*" required><br>
-    <p>*Password must be a minimun of 12 characters and include 1 capitol letter, 1 number and 1 special character.</p><br>
+    <input type="password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required><br>
+    <p>Password must be a minimun of 12 characters and include 1 capitol letter, 1 number and 1 special character.</p><br>
     <input id="accountButton" type="submit" value="Login">    
     </form>
     <p >No account? <a id="signup" href="/account/register">Sign-up</a></p>

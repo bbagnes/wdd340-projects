@@ -15,14 +15,14 @@
 <div id="registerForm">
     <form action="/account/register" method="post">
     <label for="account_firstname" aria-label="Enter your First Name" >First Name:</label><br>
-    <input type="text" name="account_firstname" required><br>
+    <input type="text" name="account_firstname" id="account_firstname" required value="<%= locals.account_firstname %>"><br>
     <label for="account_lastname" aria-label="Enter your Last Name">Last Name:</label><br>
-    <input type="text" name="account_lastname" required><br>
+    <input type="text" name="account_lastname" id="account_lastname" required value="<%= locals.account_lastname %>"><br>
     <label for="account_email" aria-label="Enter your Email">Email Address:</label><br>
-    <input type="email" name="account_email" required placeholder="Enter a valid email address"><br>
+    <input type="email" name="account_email" id="account_email" required placeholder="Enter a valid email address" value="<%= locals.account_email %>"><br>
     <label for="account_password" aria-label="Select an account Password">Password:</label><br>
-    <input type="password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" placeholder="*" required><br>
-    <p>*Password must be a minimun of 12 characters and include 1 capitol letter, 1 number and 1 special character.</p><br>
+    <input type="password" name="account_password" id="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required><br>
+    <p>Password must be a minimun of 12 characters and include 1 capitol letter, 1 number and 1 special character.</p><br>
     <input id="accountButton" type="submit" value="Register">    
     </form>
 </div>
