@@ -28,7 +28,6 @@ Util.getNav = async function (req, res, next) {
 * Build the classification view HTML
 * ************************************ */
 Util.buildClassificationGrid = async function(data){
-  console.log(data);
   let grid
   if(data.length > 0){
     grid = '<ul id="inv-display">'
@@ -61,7 +60,7 @@ Util.buildClassificationGrid = async function(data){
 /* **************************************
 * Build the vehicle view HTML
 * ************************************ */
-Util.buildvehicleGrid = async function(vehicle) {
+Util.buildVehicleGrid = async function(vehicle) {
 let grid = "<section id=\"vehicle-display\">";
 grid += "<div>";
 grid += "<section class=\"imagePrice\">";
@@ -91,6 +90,7 @@ grid += "</ul>";
 grid += "</section>";
 grid += "</div>";
 grid += "</section>";
+console.log(grid);
 return grid;
 }
 
