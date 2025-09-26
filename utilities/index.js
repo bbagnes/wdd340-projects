@@ -28,6 +28,7 @@ Util.getNav = async function (req, res, next) {
 * Build the classification view HTML
 * ************************************ */
 Util.buildClassificationGrid = async function(data){
+  console.log(data);
   let grid
   if(data.length > 0){
     grid = '<ul id="inv-display">'
@@ -60,34 +61,37 @@ Util.buildClassificationGrid = async function(data){
 /* **************************************
 * Build the vehicle view HTML
 * ************************************ */
-Util.buildvehicleGrid = async function(data) {
-  let grid
-  if(data.length > 0){
-    grid = '<ul id="inv-display">'
-    data.forEach(vehicle => { 
-      grid += '<li id=inv-item>'
-      grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
-      + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
-      + 'details"><img src="' + vehicle.inv_thumbnail 
-      +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
-      +' on CSE Motors" /></a>'
-      grid += '<div class="namePrice">'
-      grid += '<hr />'
-      grid += '<h2>'
-      grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
-      + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
-      + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
-      grid += '</h2>'
-      grid += '<span>$' 
-      + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
-      grid += '</div>'
-      grid += '</li>'
-    })
-    grid += '</ul>'
-  } else { 
-    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
-  }
-  return grid
+Util.buildvehicleGrid = async function(vehicle) {
+let grid = "<section id=\"vehicle-display\">";
+grid += "<div>";
+grid += "<section class=\"imagePrice\">";
+grid +=
+"<img src='" +
+vehicle.inv_image +
+"' alt='Image of " +
+vehicle.inv_make +
+" " +
+vehicle.inv_model +
+" on cse motors' id='mainImage'>";
+grid += "</section>";
+grid += "<section class=\"vehicleDetail\">";
+grid += "<h3> " + vehicle.inv_make + " " + vehicle.inv_model + " Details</h3>";
+grid += "<ul id=\"vehicle-details\">";
+grid +=
+"<li><h4>Price: $" +
+new Intl.NumberFormat("en-US").format(vehicle.inv_price) +
+"</h4></li>";
+grid += "<li><h4>Description:</h4> " + vehicle.inv_description + "</li>";
+grid += "<li><h4>Color:</h4> " + vehicle.inv_color + "</li>";
+grid +=
+"<li><h4>Miles:</h4> " +
+new Intl.NumberFormat("en-US").format(vehicle.inv_miles) +
+"</li>";
+grid += "</ul>";
+grid += "</section>";
+grid += "</div>";
+grid += "</section>";
+return grid;
 }
 
 /* ****************************************
