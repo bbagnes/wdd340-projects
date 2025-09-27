@@ -1,0 +1,25 @@
+<!-- Generate a title with values created in the controller, or return the home view. -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+<%- messages() %>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+<div id="addClassificationForm">  
+  <form action="/inventory/addclassification" method="post">
+    <p>FIELD IS REQUIRED.</p><br>
+    <fieldset>   
+      <label for="classification_name" aria-label="Add a new classification">Classification Name</label><br>
+      <input type="text" name="classification_name" id="classification_name" pattern="[A-Za-z]{3,}" required><br>
+      <p>NAME MUST BE ALPHABETIC CHARACTERS ONLY.</p><br>
+      <input id="accountButton" type="submit" value="Add Classifcation">
+    </fieldset>   
+  </form>
+</div>
