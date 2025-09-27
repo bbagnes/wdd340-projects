@@ -144,7 +144,7 @@ h1 {
   color: red;
 }
 
-div #loginForm, div #registerForm {
+div #Form {
   display: block;
   align-content: space-around;
   justify-content: center;
@@ -162,26 +162,25 @@ div #loginForm, div #registerForm {
   border-radius: 6px;
 }
 
-div #registerForm label, div #registerForm input,
-div #loginForm label, div #loginForm input {
+div #Form label, div #Form input {
   height: 35px;
   width: 220px;
   margin: 10px;
 }
 
-input:required:invalid, input:focus:invalid {
-  border: 3px solid red;
+input:focus:invalid {
+  background-color: rgba(255, 0, 0, 0.9);
 }
 
-input:required:valid {
-  border: 3px solid green;
+input:focus:valid {
+  background-color: rgba(0, 255, 0, .3);
 }
 
 div #loginForm p, div #registerForm p {
   margin: 0 10px;
 }
 
-div #accountButton {
+div #submitButton {
   justify-self:center;
   text-align: center;
   max-width: 100px;

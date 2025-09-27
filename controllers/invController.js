@@ -8,7 +8,7 @@ const invCont = {}
 ***************************************** */
 invCont.buildManagementView = async function (req, res, next) {
   let nav = await utilities.getNav()
-  res.render("./inventory/", {
+  res.render("./inventory/management", {
     title: "Vehicle Management", nav, errors: null})
 }
 
@@ -44,7 +44,7 @@ invCont.buildByInventoryId = async function (req, res, next) {
  invCont.buildAddClassifcation = async function(req, res, next) {
   let nav = await utilities.getNav()
   res.render("inventory/addclassifcation", {
-    title: "Register", nav, errors: null})
+    title: "Add New Classification", nav, errors: null})
 }
 
 /* ****************************************
@@ -52,8 +52,43 @@ invCont.buildByInventoryId = async function (req, res, next) {
 * *************************************** */
  invCont.buildAddVehicle = async function(req, res, next) {
   let nav = await utilities.getNav()
+  let classList = await utilities.buildClassificationList()
   res.render("inventory/addvehicle", {
-    title: "Register", nav, errors: null})
+    title: "Add New Vehicle", nav, classList, errors: null})
 }
+
+/* ****************************************
+*  Process new vehicle Registration
+* *************************************** */
+invCont.newVehicleRegister = async function (req, res) {
+  let nav = await utilities.getNav()
+  const { } = req.body
+  const regResult = await invModel.registerNewVehicle(
+    classification_id, 
+    inv_make, 
+    inv_model, 
+    inv_description, 
+    inv_image, 
+    inv_thumbnail, 
+    inv_price, 
+    inv_year, 
+    inv_miles, 
+    inv_color
+  )  
+
+  if (regResult) {
+    req.flash(
+      "notice",
+      `Congratulations, the ${inv_make} ${inv_model} was sucessfully added.`
+    )
+    res.status(201).render("/inventory/management", {
+      title: "Vehicle Management", nav, errors: null, })
+  } else {
+    req.flash("notice", "Sorry, the vehicle registration failed.")
+    res.status(501).render("inventory/addvehicle", {
+      title: "Add New Vehicle", nav, errors: null, })
+  }
+}
+
 
 module.exports = invCont

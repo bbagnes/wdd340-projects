@@ -12,7 +12,7 @@
 <%  }) %>
  </ul>
 <% } %>
-<div id="registerForm">
+<div id="Form">
     <form action="/account/register" method="post">
     <label for="account_firstname" aria-label="Enter your First Name" >First Name:</label><br>
     <input type="text" name="account_firstname" id="account_firstname" required value="<%= locals.account_firstname %>"><br>
@@ -23,6 +23,6 @@
     <label for="account_password" aria-label="Select an account Password">Password:</label><br>
     <input type="password" name="account_password" id="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required><br>
     <p>Password must be a minimun of 12 characters and include 1 capitol letter, 1 number and 1 special character.</p><br>
-    <input id="accountButton" type="submit" value="Register">    
+    <input id="submitButton" type="submit" value="Register">    
     </form>
 </div>

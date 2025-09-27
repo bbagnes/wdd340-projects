@@ -1,0 +1,17 @@
+<!-- Generate a title with values created in the controller, or return the home view. -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+<%- messages() %>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+<div id="manageInv">
+    <a href="#">Add New Classification</a>
+    <a href="#">Add New Vehicle</a>
