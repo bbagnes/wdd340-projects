@@ -7,6 +7,13 @@ const validate = {}
 * ********************************* */
 validate.newVehicleRules = () => {
     return [
+      
+      //model is required and must be a string
+      body("classification_id")
+        .notEmpty()
+        .isLength(1)
+        .withMessage("Please select a classification."),
+
       // model is required and must be a string
       body("inv_model")
         .trim()
@@ -73,32 +80,12 @@ validate.newVehicleRules = () => {
   validate.newClassificationRules = () => {
     return [     
       // valid email is required and cannot already exist in the DB
-      body("account_email")
+      body("classification_name")
         .trim()
         .escape()
         .notEmpty()
-        .isEmail()
-        .normalizeEmail() // refer to validator.js docs
-        .withMessage("A valid email is required.")
-        .custom(async (account_email) => {
-          const emailExists = await accountModel.checkExistingEmail(account_email)
-          if (!emailExists){
-          throw new Error("Invalid Entry. Please use a valid email or Register a new account.")
-        }
-      }),
-  
-      // password is required and must be strong password
-      body("account_password")
-        .trim()
-        .notEmpty()
-        .isStrongPassword({
-          minLength: 12,
-          minLowercase: 1,
-          minUppercase: 1,
-          minNumbers: 1,
-          minSymbols: 1,
-        })
-        .withMessage("Password does not meet requirements."),
+        .isLength({ min: 3 })
+        .withMessage("Please provide a valid classification name.")
     ]
 }
 
