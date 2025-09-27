@@ -11,7 +11,7 @@ validate.newVehicleRules = () => {
       //model is required and must be a string
       body("classification_id")
         .notEmpty()
-        .isLength(1)
+        .isLength({ min: 1 })
         .withMessage("Please select a classification."),
 
       // model is required and must be a string
