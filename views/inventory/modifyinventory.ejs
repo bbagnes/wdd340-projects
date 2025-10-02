@@ -12,12 +12,15 @@
 <%  }) %>
  </ul>
 <% } %>
-<div id="Form">  
+<div id="Form updateForm">  
   <form action="/inv/modify" method="post">
     <p>ALL FIELDS ARE REQUIRED.</p><br>
     <fieldset>
     <<label for="classifaction-id" aria-label="Select a classification" >Classification</label><br>
     <%- classList %>
+    <input type="hidden" name="inv_id"
+    <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+    <% } %>>
     <label for="inv_make" aria-label="Enter the make">Make</label><br>
     <input type="text" name="inv_make" id="inv_make" required pattern="[a-zA-Z0-9-]{3,}" placeholder="Min of 3 characters" value="<%= locals.inv_make %>"><br>
     <label for="inv_model" aria-label="Enter the model">Model</label><br>
@@ -36,7 +39,9 @@
     <input type="number" name="inv_miles" id="inv_miles" required placeholder="digits only" value="<%= locals.inv_miles %>"><br>
     <label for="inv_color" aria-label="Enter the vehicle color">Color</label><br>
     <input type="text" name="inv_color" id="inv_color" required value="<%= locals.inv_color %>"><br>
-    <input id="submitButton" type="submit" value="Modify Vehicle">
+    <input id="submitButton" type="submit" value="Modify Vehicle" disabled>
   </fieldset>    
   </form>
+  <script src="../js/invupdate.js"></script>
 </div>
+

@@ -14,8 +14,11 @@ router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvento
 //Route to build the inventory management view
 router.get("/", utilities.handleErrors(invController.buildManagementView));
 
-//Route to allow the modification of inventory items
+//Route for view to allow the modification of inventory items
 router.get("/modify/:invId", utilities.handleErrors(invController.modifyInventoryView))
+
+//Route to modify existing inventory items
+router.post("/update/", utilities.handleErrors(invController.updateInventory));
 
 //Route to edit vehicles selected by classification in management view
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
