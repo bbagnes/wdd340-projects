@@ -314,8 +314,10 @@ div.upgrades a {
 }
 
 #manageInv {
- background-color: var(--secondary-color);
- border: var(--border2);
+  display: block;
+  background-color: var(--secondary-color);
+   border: var(--border2);
+   padding: 10px;
 }
 
 #manageAcc {

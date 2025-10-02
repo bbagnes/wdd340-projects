@@ -12,7 +12,7 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin))
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 //Route to build account management view
-router.get("/", utilities.handleErrors(accountController.buildManagementView));
+router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildManagementView));
 
 //Route to validate and store registration form information into the account table in the database
 router.post(
