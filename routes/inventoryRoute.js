@@ -6,34 +6,34 @@ const utilities = require("../utilities/")
 const invValidate = require("../utilities/inventory-validation")
 
 // Route to build inventory by classification view.
-router.get("/type/:classificationId", invController.buildByClassificationId);
+router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 
 // Route to build inventory by classification view.
-router.get("/detail/:invId", invController.buildByInventoryId);
+router.get("/detail/:invId", utilities.handleErrors(invController.buildByInventoryId));
 
 //Route to build the inventory management view
-router.get("site-name/inv", utilities.handleErrors(invController.buildManagementView));
+router.get("/", utilities.handleErrors(invController.buildManagementView));
 
 //Route to build the new classifcation view.
-route.get("/addClassification", invController.buildAddClassifcation)
+router.get("/inv/addclassification", utilities.handleErrors(invController.buildAddClassification));
 
 // //Route to process and add a new Classification to database.
-router.post(
-    "/addClassification",
-    invValidate.newClassificationRules(),
-    invValidate.checkAddClassificationData,
-    utilities.handleErrors(invController.addClassificationRegister)
-)
+// router.post(
+//     "/addClassification",
+//     invValidate.newClassificationRules(),
+//     invValidate.checkAddClassificationData,
+//     utilities.handleErrors(invController.addClassificationRegister)
+// );
 
 //Route to build the add new vehicle view
-route.get("/addVehicle", invController.buildAddVehicle);
+router.get("/addVehicle", utilities.handleErrors(invController.buildAddVehicle));
 
-//Route to process and add a new vehicle to the database
-router.post(
-    "/addVehicle",
-    invValidate.newVehicleRules(),
-    invValidate.checkAddVehicleData,
-    utilities.handleErrors(invController.addVehicleRegister)
-)
+// //Route to process and add a new vehicle to the database
+// router.post(
+//     "/addVehicle",
+//     invValidate.newVehicleRules(),
+//     invValidate.checkAddVehicleData,
+//     utilities.handleErrors(invController.newVehicleRegister)
+// );
 
 module.exports = router;

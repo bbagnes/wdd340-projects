@@ -39,11 +39,11 @@ invCont.buildByInventoryId = async function (req, res, next) {
 }
 
 /* ****************************************
-*  Deliver new classifiaction view
+*  Deliver new classification view
 * *************************************** */
- invCont.buildAddClassifcation = async function(req, res, next) {
+ invCont.buildAddClassification = async function(req, res, next) {
   let nav = await utilities.getNav()
-  res.render("inventory/addclassifcation", {
+  res.render("./inventory/addclassifcation", {
     title: "Add New Classification", nav, errors: null})
 }
 
@@ -53,7 +53,7 @@ invCont.buildByInventoryId = async function (req, res, next) {
  invCont.buildAddVehicle = async function(req, res, next) {
   let nav = await utilities.getNav()
   let classList = await utilities.buildClassificationList()
-  res.render("inventory/addvehicle", {
+  res.render("./inventory/addvehicle", {
     title: "Add New Vehicle", nav, classList, errors: null})
 }
 

@@ -92,7 +92,7 @@ Nav ul {
   font-size: .8rem;
   padding: 2px 0;
   margin: 10px 0;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 nav li{
@@ -113,16 +113,28 @@ nav li:hover {
 }
 
 #inv-display {
-  list-style: none;
+  column-gap: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0;
 }
 
-#inv-item {
-  padding: 2px;
+li.inv-item {  
+  display: block;
+  align-content: space-between;
+  text-align: center;
+  list-style: none;
+  width: 240px;
+  height: 280px;
+  margin: 15px auto;
   background-color: var(--secondary-color);
   border: 1px solid #3066be;
+  border-radius: 3px;
 }
 
-div.namePrice {
+div.namePrice span {
+  display: inline-block;
   font-size: 1.2rem;
   font-weight: 800;
 }
@@ -301,6 +313,35 @@ div.upgrades a {
   color: var(--primary-color);
 }
 
+#vehicle-display {
+  display: block;
+  background-color: var(--secondary-color);
+  font-size: larger;
+  padding: 5px;
+  margin: 0 auto;
+  border: var(--border2);
+  border-radius: 6px;
+}
+
+section.vehImage {
+  align-content: flex-start;
+  text-align: center;
+}
+
+section.vehicleDetail {
+  grid-area: details;
+  width: 300px;
+  text-wrap: wrap;
+}
+
+#vehicle-details {  
+  list-style: none;
+}
+
+li.vehDesc {
+  margin-bottom: 15px;
+}
+
 @media screen and (min-width: 560px) {
 
   header span.siteName a {
@@ -378,6 +419,25 @@ div.upgrades a {
  div.delorean p.space {
   margin-bottom: 30px;
   }
+
+  #vehicle-display {
+    display: flex;
+    font-size: larger;
+  }
+
+  section.vehImage {
+ display: inline-block;
+ max-width: 500px;
+ height: auto;
+ margin-bottom: 20px;
+}
+
+section.vehicleDetail {
+  display: inline-block;
+  padding: 5px;
+}
+
+
 }
 
 @media screen and (min-width: 960px) {

@@ -11,6 +11,9 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin))
 //Route to build registration form by registration view
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
+//Route to build account management view
+router.get("/", utilities.handleErrors(accountController.buildManagementView));
+
 //Route to validate and store registration form information into the account table in the database
 router.post(
     "/register",
@@ -24,9 +27,7 @@ router.post(
   "/login",
   accountValidate.loginRules(),
   accountValidate.checkloginData,
-  (req, res) => {
-    res.status(200).send('login process')
-  }
+  utilities.handleErrors(accountController.accountLogin)
 )
 
 module.exports = router;
