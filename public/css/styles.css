@@ -313,6 +313,16 @@ div.upgrades a {
   color: var(--primary-color);
 }
 
+#manageInv {
+ background-color: var(--secondary-color);
+ border: var(--border2);
+}
+
+#manageAcc {
+  font-size: larger;
+  font-weight: 700;
+}
+
 #vehicle-display {
   display: block;
   background-color: var(--secondary-color);
