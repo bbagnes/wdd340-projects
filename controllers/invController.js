@@ -109,7 +109,7 @@ invCont.getInventoryJSON = async (req, res, next) => {
  *  Modify existing inventory item view
  * ************************** */
 invCont.modifyInventoryView = async function (req, res, next) {
-  const inv_id = parseInt(req.params.inv_id)
+  const inv_id = parseInt(req.params.invId)
   let nav = await utilities.getNav()
   const itemData = await invModel.getInventoryById(inv_id)
   const classificationSelect = await utilities.buildClassificationList(itemData.classification_id)
@@ -189,6 +189,55 @@ invCont.updateInventory = async function (req, res) {
     inv_miles,
     inv_color,
     classification_id
+    })
+  }
+}
+
+/* ***************************
+ *  Delete existing inventory item view
+ * ************************** */
+invCont.deleteInventoryView = async function (req, res, next) {
+  const inv_id = parseInt(req.params.invId)
+  let nav = await utilities.getNav()
+  const itemData = await invModel.getInventoryById(inv_id)
+  const itemName = `${itemData.inv_make} ${itemData.inv_model}`
+  res.render("./inventory/deleteinventory", {
+    title: "Delete " + itemName,
+    nav,
+    errors: null,
+    inv_id: itemData.inv_id,
+    inv_make: itemData.inv_make,
+    inv_model: itemData.inv_model,
+    inv_year: itemData.inv_year,
+    inv_price: itemData.inv_price
+  })
+}
+
+/* ****************************************
+*  Delete Inventory Data
+* *************************************** */
+invCont.deleteInventoryItem = async function (req, res) {
+  const inv_id = parseInt(req.params.invId)
+  const itemData = await invModel.getInventoryById(inv_id)
+  const deleteItem = await invModel.deleteInventoryItem(inv_id);
+  let nav = await utilities.getNav()
+
+  if (deleteItem) {
+    const itemName = itemData.inv_make + " " + itemData.inv_model
+    req.flash("notice", `The ${itemName} was successfully deleted.`)
+    res.redirect("/inv/")
+  } else {
+    const itemName = `${itemData.inv_make} ${itemData.inv_model}`
+    req.flash("notice", "Sorry, the deletion failed.")
+    res.status(501).render("inventory/deleteinventory", {
+    title: "Delete " + itemName,
+    nav,
+    errors: null,
+    inv_id: itemData.inv_id,
+    inv_make: itemData.inv_make,
+    inv_model: itemData.inv_model,
+    inv_year: itemData.inv_year,
+    inv_price: itemData.inv_price
     })
   }
 }

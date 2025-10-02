@@ -15,10 +15,16 @@ router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvento
 router.get("/", utilities.handleErrors(invController.buildManagementView));
 
 //Route for view to allow the modification of inventory items
-router.get("/modify/:invId", utilities.handleErrors(invController.modifyInventoryView))
+router.get("/modify/:invId", utilities.handleErrors(invController.modifyInventoryView));
 
 //Route to modify existing inventory items
 router.post("/update/", utilities.handleErrors(invController.updateInventory));
+
+//Route to delete an item from inventory view
+router.get("/delete/:invId", utilities.handleErrors(invController.deleteInventoryView));
+
+//Route to delete a selected inventory item form the database
+router.post("/delete", utilities.handleErrors(invController.deleteInventoryItem));
 
 //Route to edit vehicles selected by classification in management view
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))

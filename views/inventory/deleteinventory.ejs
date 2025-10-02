@@ -1,0 +1,37 @@
+<!-- Generate a title with values created in the controller, or return the home view. -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+<%- messages() %>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+<div id="Form deleteForm">  
+  <form action="/inv/delete" method="post">
+    <p>Verify Details for Vehicle to Delete. The deletion is permanent.</p><br>
+    <fieldset>
+    <<label for="classifaction-id" aria-label="Select a classification" >Classification</label><br>
+    <%- classList %>
+    <input type="hidden" name="inv_id"
+    <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+    <% } %>>
+    <label for="inv_make" aria-label="vehicle make">Make</label><br>
+    <input type="text" name="inv_make" id="inv_make" required pattern="[a-zA-Z0-9-]{3,}" placeholder="Min of 3 characters" value="<%= locals.inv_make %>" readonly><br>
+    <label for="inv_model" aria-label="vehicle model">Model</label><br>
+    <input type="text" name="inv_model" id="inv_model" required pattern="[A-Za-z0-9-]{3,}" placeholder="Min of 3 characters" value="<%= locals.inv_model %>" readonly><br>
+    <label for="inv_price" aria-label="vehicle price">Price</label><br>
+    <input type="text" name="inv_price" id="inv_price" pattern="^\d*\.\d{2}$" required placeholder="decimal or integer" value="<%= locals.inv_price %>" readonly><br>
+    <label for="inv_year" aria-label="vehicle year">Year</label><br>
+    <input type="number" name="inv_year" id="inv_year" min="4" max="4" required placeholder="4-digit year" value="<%= locals.inv_year %>" readonly><br>
+    <input id="submitButton" type="submit" value="Delete Vehicle">
+  </fieldset>    
+  </form>
+  
+</div>
+
