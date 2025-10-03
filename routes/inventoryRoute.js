@@ -30,22 +30,22 @@ router.post("/delete", utilities.handleErrors(invController.deleteInventoryItem)
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
 //Route to build the new classifcation view.
-router.get("/inv/addclassification", utilities.handleErrors(invController.buildAddClassification));
+router.get("/addclassification", utilities.handleErrors(invController.buildAddClassification));
 
 // //Route to process and add a new Classification to database.
 // router.post(
-//     "/addClassification",
-//     invValidate.newClassificationRules(),
+//     "/addclassification",
+//     utilities.newClassificationRules(),
 //     invValidate.checkAddClassificationData,
-//     utilities.handleErrors(invController.addClassificationRegister)
+//     utilities.handleErrors(invController.newClassificationRegister)
 // );
 
 //Route to build the add new vehicle view
-router.get("/addVehicle", utilities.handleErrors(invController.buildAddVehicle));
+router.get("/addvehicle", utilities.handleErrors(invController.buildAddVehicle));
 
 // //Route to process and add a new vehicle to the database
 // router.post(
-//     "/addVehicle",
+//     "/addvehicle",
 //     invValidate.newVehicleRules(),
 //     invValidate.checkAddVehicleData,
 //     utilities.handleErrors(invController.newVehicleRegister)

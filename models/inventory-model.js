@@ -45,7 +45,7 @@ async function getInventoryByClassificationId(classification_id) {
 /* *****************************
 *   Register a new classification
 * *************************** */
-async function registerClassification(classification_name){
+async function registerNewClassification(classification_name){
   try {
     const sql = "INSERT INTO classification (classification_name) VALUES ($1) RETURNING *"
     return await pool.query(sql, [classification_name])
@@ -118,4 +118,4 @@ async function deleteInventoryItem(inv_id) {
 }
 
 module.exports = {getClassifications, getInventoryByClassificationId,
-  getInventoryById, registerNewVehicle, registerClassification, updateInventory, deleteInventoryItem}
+  getInventoryById, registerNewVehicle, registerNewClassification, updateInventory, deleteInventoryItem}

@@ -90,21 +90,19 @@ validate.newVehicleRules = () => {
 }
 
   /* ******************************
- * Check data and return errors or continue to registration
+ * Check new Classification data and return errors or continue to registration
  * ***************************** */
-validate.checkRegData = async (req, res, next) => {
-  const {  } = req.body
+validate.checkAddClassificationData = async (req, res, next) => {
+  const classification_id = req.body
   let errors = []
   errors = validationResult(req)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
-    res.render("account/register", {
+    res.render("inv", {
       errors,
       title: "Registration",
       nav,
-      account_firstname,
-      account_lastname,
-      account_email,
+      
     })
     return
   }
@@ -112,9 +110,9 @@ validate.checkRegData = async (req, res, next) => {
 }
 
 /* ******************************
- * Check data and return errors or continue to login
+ * Check new Vehicle data and return errors or continue to login
  * ***************************** */
-validate.checkloginData = async (req, res, next) => {
+validate.checkAddVehicleData = async (req, res, next) => {
   const account_email = req.body
   let errors = []
   errors = validationResult(req)

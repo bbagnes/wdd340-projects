@@ -4,6 +4,14 @@
 <% } else {
   res.redirect('/')
 } %>
+<%- messages() %>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
 
 <!-- Create an element to display a message, if needed. (currently commented '#' out).
 Replacing the '#' with a '-' will allow the display of a message, if there is one to display. -->
